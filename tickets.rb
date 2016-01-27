@@ -2,6 +2,7 @@
 require 'rubygems'
 require 'sinatra'
 
-get '/' do  
+get '/' do 
+	@title = "Ticketland | Home" 
 	erb :home	
 end
