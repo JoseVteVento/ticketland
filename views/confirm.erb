@@ -1,0 +1,31 @@
+<div>
+	<div>
+		<form action='/confirm/<%=@id_ticket%>' method='post'>
+			<label>Código entrada: <%=@id_ticket%></label>
+			<input type='text' name='id_ticket' value='<%=@id_ticket%>' readonly> </br>
+
+			<label>Nombre: <%=@name%></label>
+			<input type='text' name='name' value='<%=@name%>' readonly></br>
+
+			<label>Email: </label>
+			<input type='text' name ='email' value='<%=@email%>' readonly></br>
+
+			<label value='phone'>Teléfono: </label>
+			<input type='text' name='phone' value='<%=@phone%>' readonly></br>
+
+			<label value='film'>Pelicula: </label>
+			<input type='text' name='film' value='<%=@film%>' readonly></br>
+
+			<label value='price'>Precio total:  </label>
+			<input type='text' name='price' value='<%=@price%>' readonly>
+			<label> €</label></br>	
+
+			<input type='submit' value='Confirmar'>
+		</form>
+	</div>
+	<div>	
+		<form action='/form' method='get' style='display:inline';>
+			<input type='submit' value='Atrás'>
+		</form>
+	</div>
+</div>

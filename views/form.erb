@@ -1,0 +1,33 @@
+<form  action='/confirm' method='post'>	
+	<div>
+		<label>Nombre: </label>
+		<input type='text' name='name'>
+	</div>
+	<div>
+		<label>Email: </label>
+		<input type='text' name='email'>
+	</div>
+	<div>
+		<label>Teléfono: </label>
+		<input type='text' name='phone'>
+	</div>
+	<div>
+		<label>Seleccione película</label>
+		<select name="film">
+			<% @film_list.each do |item|%>
+				<option value="<%=item%>"><%= item %></option>
+			<%end%>			
+		</select>
+	</div>
+	<div>
+		<label>Tipo/Precio: </label>
+		<select name="price">
+			<% @list_prices.each do |ticket_type, price|%>
+				<option value="<%=price%>"><%=ticket_type%> <%=price%> €</option>
+			<%end%>			
+		</select>
+	</div>
+	<div>
+		<input type='submit' value='Comprar'>
+	</div>
+</form>
