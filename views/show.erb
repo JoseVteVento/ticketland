@@ -1,0 +1,17 @@
+<div>
+	<form action='/' method='get'>
+		<p>Lista de entradas vendidas</p>	
+		<%@tickets.each do |ticket|%>
+			<div>
+				<label value='id_ticket'>Código entrada: <%=ticket[0]%></label></br>
+				<label value='name'>Nombre: <%=ticket[1]%></label></br>
+				<label value='email'>Email: <%=ticket[2]%></label>
+				<label value='phone'>Teléfono: <%=ticket[3]%></label></br>
+				<label value='film'>Pelicula: <%=ticket[4]%></label>
+				<label value='price'>Precio total: <%=ticket[5]%>  €</label></br>	
+			</div></br>
+		<%end%>
+		<%=@tickets.to_s%>
+		<input type='submit' value='Aceptar'>
+	</form>
+</div>

@@ -1,23 +1,23 @@
 <div>
 	<div>
-		<form action='/confirm/<%=@id_ticket%>' method='post'>
-			<label>Código entrada: <%=@id_ticket%></label>
-			<input type='text' name='id_ticket' value='<%=@id_ticket%>' readonly> </br>
+		<form action='/confirm/<%=@ticket.get_ticket_id[0]%>' method='post'>
+			<label>Código entrada: </label>
+			<input type='text' name='id_ticket' value='<%=@ticket.get_ticket_id[0]%>' readonly> </br>
 
-			<label>Nombre: <%=@name%></label>
-			<input type='text' name='name' value='<%=@name%>' readonly></br>
+			<label>Nombre: </label>
+			<input type='text' name='name' value='<%=@ticket.get_name%>' readonly></br>
 
 			<label>Email: </label>
-			<input type='text' name ='email' value='<%=@email%>' readonly></br>
+			<input type='text' name ='email' value='<%=@ticket.get_email%>' readonly></br>
 
 			<label value='phone'>Teléfono: </label>
-			<input type='text' name='phone' value='<%=@phone%>' readonly></br>
+			<input type='text' name='phone' value='<%=@ticket.get_phone%>' readonly></br>
 
 			<label value='film'>Pelicula: </label>
-			<input type='text' name='film' value='<%=@film%>' readonly></br>
+			<input type='text' name='film' value='<%=@ticket.get_film%>' readonly></br>
 
 			<label value='price'>Precio total:  </label>
-			<input type='text' name='price' value='<%=@price%>' readonly>
+			<input type='text' name='price' value='<%=@ticket.get_price%>' readonly>
 			<label> €</label></br>	
 
 			<input type='submit' value='Confirmar'>

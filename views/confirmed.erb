@@ -1,14 +1,12 @@
 <div>
-	<p>Gracias por comprar a través de Ticketland</p>	
-	<label value='id_ticket'>Código entrada: <%=@id_ticket%></label></br>
-	<label value='name'>Nombre: <%=@name%></label></br>
-	<label value='email'>Email: <%=@email%></label>
-	<label value='phone'>Teléfono: <%=@phone%></label></br>
-	<label value='film'>Pelicula: <%=@film%></label>
-	<label value='price'>Precio total: <%=@price%>  €</label></br>	
-
-	<form action='/confirm' method='post'> 
-		<input type="hidden" name="_method" value="put">
+	<form action='/' method='get'>
+		<p>Gracias por comprar a través de Ticketland</p>	
+		<label value='id_ticket'>Código entrada: <%=@ticket.get_ticket_id[0]%></label></br>
+		<label value='name'>Nombre: <%=@ticket.get_name%></label></br>
+		<label value='email'>Email: <%=@ticket.get_email%></label>
+		<label value='phone'>Teléfono: <%=@ticket.get_phone%></label></br>
+		<label value='film'>Pelicula: <%=@ticket.get_film%></label>
+		<label value='price'>Precio total: <%=@ticket.get_price%>  €</label></br>	
 		<input type='submit' value='Aceptar'>
 	</form>
 </div>

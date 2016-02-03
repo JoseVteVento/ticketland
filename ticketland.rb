@@ -2,12 +2,57 @@ require 'rubygems'
 require 'sinatra'
 require 'pony'
 
-TITLE = "Ticketland | "
-tickets_list = []
+class Ticket
 
+	@@tickets_list = []
+
+	def initialize(ticket_code, name, email, phone, film, price)
+		@ticket_code = ticket_code,
+		@name = name,
+		@email = email,
+		@phone = phone,
+		@film = film,
+		@price = price
+	end
+
+	def get_ticket_id
+		@ticket_code
+	end
+
+	def get_name
+		@name
+	end
+
+	def get_email
+		@email
+	end
+
+	def get_phone
+		@phone
+	end
+
+	def get_film
+		@film
+	end
+
+	def get_price
+		@price
+	end
+
+	def add_ticket
+		@@tickets_list << [@ticket_code, @name, @email, @phone, @film, @price]
+	end
+
+	def get_tickets_list
+		@@tickets_list
+	end
+end
+
+
+
+TITLE = "Ticketland | "
 
 get '/' do 
-
 	@title = TITLE << "Home " 
 	erb :home	
 end
@@ -21,12 +66,9 @@ end
 
 post '/confirm' do	
 	@title = TITLE << "Confimación"
-	@id_ticket = Time.now.to_i
-	@name = params[:name]
-	@email = params[:email]
-	@phone = params[:phone]
-	@film = params[:film]
-	@price = params[:price]
+	ticket_id = Time.now.to_i
+	@ticket = Ticket.new(ticket_id, params[:name], params[:email], params[:phone], params[:film], params[:price])
+	@ticket.add_ticket
 	erb :confirm	
 end
 
@@ -49,19 +91,12 @@ post '/confirm/:id_ticket' do
     	:to => "#{params[:email]}", 
     	:body => "Gracias por comprar a través de Ticketland. El código de su entrada es #{params[:id_ticket]}" )
 
-	@title = TITLE << "Compra confirmada"
-	@id_ticket = params[:id_ticket]
-	@name = params[:name]
-	@email = params[:email]
-	@phone = params[:phone]
-	@film = params[:film]
-	@price = params[:price] 
+	@ticket = Ticket.new(params[:id_ticket], params[:name], params[:email], params[:phone], params[:film], params[:price])
 	
 	erb :confirmed
-
 end
 
-put '/confirm' do
-	#añadir la informacion al array
+post '/show' do	
+	@tickets=Ticket.get_tickets_list
+	erb :show
 end
-
