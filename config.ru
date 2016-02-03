@@ -1,2 +1,2 @@
-require './tickets'
+require './ticketland'
 run Sinatra::Application
