@@ -40,16 +40,21 @@ post '/confirm/:id_ticket' do
       :enable_starttls_auto => true
     }
   }
+
+  body = "<h2>Gracias por comprar a través de Ticketland</h2></br> 
+  			<p>El código de su entrada es #{params[:id_ticket]}</p></br>
+  			<a href='https://ticketland.herokuapp.com/review/#{params[:id_ticket]}/#{params[:name]}/#{params[:email]}/#{params[:phone]}/#{params[:film]}/#{params[:price]}'>See your ticket</a>
+  			" 
     Pony.mail(:subject=> 'Confirmación compra de Ticket ' , 
     	:to => "#{params[:email]}", 
-    	:body => "Gracias por comprar a través de Ticketland. El código de su entrada es #{params[:id_ticket]}" )
+    	:html_body => body)
 
 	@ticket = Ticket.new(params[:id_ticket], params[:name], params[:email], params[:phone], params[:film], params[:price])
 	
 	erb :confirmed
 end
 
-post '/show' do	
-	@tickets=Ticket.get_tickets_list
+get '/review/:id/:name/:email/:phone/:film/:price' do	
+	@ticket = Ticket.new(params[:id], params[:name], params[:email], params[:phone], params[:film].gsub('+',' '), params[:price])
 	erb :show
 end
