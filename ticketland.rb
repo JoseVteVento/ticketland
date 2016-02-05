@@ -26,7 +26,8 @@ post '/confirm' do
 end
 
 post '/confirm/:id_ticket' do
-		
+		@title = TITLE << "Confirmado"
+
 	Pony.options = {
     :from => 'ticketland.herokuapp.com',
     :via => :smtp,
