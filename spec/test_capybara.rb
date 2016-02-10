@@ -1,5 +1,5 @@
 require 'capybara/rspec'
-require '../ticketland'
+require './ticketland'
 
 
 Capybara.app = Sinatra::Application
